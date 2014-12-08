@@ -14,7 +14,9 @@ namespace Excellence
         {
             string baseUrl = "https://preview.netdimensions.com/preview/";
             string onBehalfOf = "netd_rob";
-            WebRequest.Create(baseUrl + "api/learningPath?"+ ToString("format", "xml") + "&" + ToString("onBehalfOf", onBehalfOf));
+            string requestUriString = baseUrl + "api/learningPath?" + Parameter.ToString(new Parameter("format", "xml"), new Parameter("onBehalfOf", onBehalfOf));
+            Console.WriteLine(requestUriString);
+            WebRequest.Create(requestUriString);
             System.IO.FileStream x = new System.IO.FileStream("C:\\Users\\robertlowe\\Source\\Repos\\Excellence\\learningPath.xml", System.IO.FileMode.Open);
             learningPath path = (learningPath)new System.Xml.Serialization.XmlSerializer(typeof(NetDimensions.Apis.LearningPath.learningPath)).Deserialize(x);
             foreach (jobProfile p in path.jobProfile)
@@ -23,10 +25,27 @@ namespace Excellence
             }
             Console.ReadKey();
         }
+    }
 
-        private static string ToString(string name, string value)
+    class Parameter
+    {
+        public string Name { get; private set; }
+        public string Value { get; private set; }
+
+        public Parameter(string paramName, string paramValue)
         {
-            return Uri.EscapeDataString(name) + "=" + Uri.EscapeDataString(value);
+            Name = paramName;
+            Value = paramValue;
+        }
+
+        public override string ToString()
+        {
+            return Uri.EscapeDataString(Name) + "=" + Uri.EscapeDataString(Value);
+        }
+
+        public static string ToString(params Parameter[] parameters)
+        {
+            return string.Join("&", (object[])parameters);
         }
     }
 }
