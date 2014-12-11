@@ -16,7 +16,9 @@ namespace Excellence
             string onBehalfOf = "netd_rob";
             string requestUriString = baseUrl + "api/learningPath?" + Parameter.ToString(new Parameter("format", "xml"), new Parameter("onBehalfOf", onBehalfOf));
             Console.WriteLine(requestUriString);
-            WebRequest.Create(requestUriString);
+            WebRequest req = WebRequest.Create(requestUriString);
+            req.Credentials = ;
+            req.GetResponse();
             System.IO.FileStream x = new System.IO.FileStream("C:\\Users\\robertlowe\\Source\\Repos\\Excellence\\learningPath.xml", System.IO.FileMode.Open);
             learningPath path = (learningPath)new System.Xml.Serialization.XmlSerializer(typeof(NetDimensions.Apis.LearningPath.learningPath)).Deserialize(x);
             foreach (jobProfile p in path.jobProfile)
