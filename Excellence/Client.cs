@@ -30,7 +30,7 @@ namespace NetDimensions.Apis
         }
     }
 
-    delegate learningPath Parser(System.IO.Stream str);
+    delegate T Parser<T>(System.IO.Stream str);
 
     class Client
     {
@@ -49,7 +49,7 @@ namespace NetDimensions.Apis
                 stream => (learningPath)new System.Xml.Serialization.XmlSerializer(typeof(NetDimensions.Apis.LearningPath.learningPath)).Deserialize(stream));
         }
 
-        private learningPath Get(string functionName, Parameter[] parameters, Parser responseParser)
+        private T Get<T>(string functionName, Parameter[] parameters, Parser<T> responseParser)
         {
             WebRequest req = WebRequest.Create(baseUrl + "api/" + functionName + "?" + Parameter.ToString(parameters));
             req.Credentials = credentials;
