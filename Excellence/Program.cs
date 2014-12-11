@@ -12,12 +12,12 @@ namespace Excellence
     {
         static void Main(string[] args)
         {
-            string baseUrl = "https://preview.netdimensions.com/preview/";
-            string onBehalfOf = "netd_rob";
+            string baseUrl = args[0];
+            string onBehalfOf = args[3];
             string requestUriString = baseUrl + "api/learningPath?" + Parameter.ToString(new Parameter("format", "xml"), new Parameter("onBehalfOf", onBehalfOf));
             Console.WriteLine(requestUriString);
             WebRequest req = WebRequest.Create(requestUriString);
-            req.Credentials = ;
+            req.Credentials = new NetworkCredential(args[1], args[2]);
             req.GetResponse();
             System.IO.FileStream x = new System.IO.FileStream("C:\\Users\\robertlowe\\Source\\Repos\\Excellence\\learningPath.xml", System.IO.FileMode.Open);
             learningPath path = (learningPath)new System.Xml.Serialization.XmlSerializer(typeof(NetDimensions.Apis.LearningPath.learningPath)).Deserialize(x);
