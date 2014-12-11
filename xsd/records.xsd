@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- For reference only. DO NOT USE FOR VALIDATION, as future Talent Suite 
+	releases might return elements not included here. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="trainingHistory">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="dateCreated" type="xs:dateTime" />
+				<xs:element maxOccurs="unbounded" minOccurs="0"
+					ref="trainingRecord" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="trainingRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="userId" type="xs:string" />
+				<xs:element ref="learningModule" />
+				<xs:element minOccurs="0" name="enrollmentDate" type="xs:dateTime" />
+				<xs:element minOccurs="0" name="startDate" type="xs:dateTime" />
+				<xs:element minOccurs="0" name="endDate" type="xs:dateTime" />
+				<xs:element name="overallStatus" type="overallStatus" />
+				<xs:element minOccurs="0" name="score" type="xs:decimal" />
+				<xs:element minOccurs="0" name="lastAttemptDate" type="xs:dateTime" />
+				<xs:element name="attemptCount" type="xs:nonNegativeInteger" />
+				<xs:element name="isSelfEnrolled" type="xs:boolean" />
+				<xs:element maxOccurs="2" minOccurs="2" ref="link" />
+				<xs:element minOccurs="0" name="revision" type="xs:nonNegativeInteger" />
+				<xs:element name="downloadable" type="xs:boolean" />
+				<xs:element minOccurs="0" name="requiredElectiveCredits" type="xs:decimal" />
+				<xs:element maxOccurs="unbounded" minOccurs="0"
+					ref="trainingRecord" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="learningModule">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:string" />
+				<xs:element name="title" type="xs:string" />
+				<xs:element name="type" type="type" />
+				<xs:element maxOccurs="2" minOccurs="2" ref="link" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="type">
+		<xs:restriction base="xs:NCName">
+			<xs:enumeration value="audioCassette" />
+			<xs:enumeration value="book" />
+			<xs:enumeration value="cd" />
+			<xs:enumeration value="classroom" />
+			<xs:enumeration value="externalCertification" />
+			<xs:enumeration value="externalCourse" />
+			<xs:enumeration value="justInTimeLearning" />
+			<xs:enumeration value="learningProgram" />
+			<xs:enumeration value="onlineModule" />
+			<xs:enumeration value="video" />
+			<xs:enumeration value="virtualClassroom" />
+			<xs:enumeration value="archivedVirtualClassroom" />
+			<xs:enumeration value="workshopSeminar" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="link">
+		<xs:complexType>
+			<xs:attribute name="rel" type="xs:string" use="required" />
+			<xs:attribute name="type" type="xs:string" use="required" />
+			<xs:attribute name="href" type="xs:anyURI" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="overallStatus">
+		<xs:restriction base="xs:NCName">
+			<xs:enumeration value="administrativeEntry" />
+			<xs:enumeration value="cancelled" />
+			<xs:enumeration value="completed" />
+			<xs:enumeration value="enrolled" />
+			<xs:enumeration value="finishedUsing" />
+			<xs:enumeration value="incomplete" />
+			<xs:enumeration value="pendingApproval" />
+			<xs:enumeration value="resource" />
+			<xs:enumeration value="shared" />
+			<xs:enumeration value="unknown" />
+			<xs:enumeration value="waitlisted" />
+			<xs:enumeration value="withdrawn" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

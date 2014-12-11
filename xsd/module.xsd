@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- For reference only. DO NOT USE FOR VALIDATION, as future Talent Suite 
+	releases might return elements not included here. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="module">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:string" />
+				<xs:element name="title" type="xs:string" />
+				<xs:element maxOccurs="2" minOccurs="2" ref="link" />
+				<xs:element name="image" type="xs:anyURI" />
+				<xs:element minOccurs="0" name="revision" type="xs:nonNegativeInteger" />
+				<xs:element name="type" type="type" />
+				<xs:element name="subject" type="xs:string" />
+				<xs:element name="language" type="xs:string" />
+				<xs:element name="description" type="xs:string" />
+				<xs:element name="objective" maxOccurs="unbounded" type="xs:string" />
+				<xs:element name="info" type="xs:string" />
+				<xs:element name="duration" type="xs:string" />
+				<xs:element minOccurs="0" ref="price" />
+				<xs:element minOccurs="0" name="archived" type="xs:boolean" />
+				<xs:element maxOccurs="unbounded" minOccurs="0" ref="attribute" />
+				<xs:element maxOccurs="unbounded" minOccurs="0" ref="session" />
+				<xs:element minOccurs="0" ref="certification" />
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="audience"
+					type="xs:string" />
+				<xs:element ref="prerequisites" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="link">
+		<xs:complexType>
+			<xs:attribute name="rel" type="xs:string" use="required" />
+			<xs:attribute name="type" type="xs:string" use="required" />
+			<xs:attribute name="href" type="xs:anyURI" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="type">
+		<xs:restriction base="xs:NCName">
+			<xs:enumeration value="audioCassette" />
+			<xs:enumeration value="book" />
+			<xs:enumeration value="cd" />
+			<xs:enumeration value="classroom" />
+			<xs:enumeration value="externalCertification" />
+			<xs:enumeration value="externalCourse" />
+			<xs:enumeration value="justInTimeLearning" />
+			<xs:enumeration value="learningProgram" />
+			<xs:enumeration value="onlineModule" />
+			<xs:enumeration value="video" />
+			<xs:enumeration value="virtualClassroom" />
+			<xs:enumeration value="archivedVirtualClassroom" />
+			<xs:enumeration value="workshopSeminar" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="price">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="currency" type="xs:string" />
+				<xs:element name="amount" type="xs:decimal" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="attribute">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="code" type="xs:string" />
+				<xs:element name="value" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="session">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:string" />
+				<xs:element minOccurs="0" name="start" type="xs:dateTime" />
+				<xs:element minOccurs="0" name="end" type="xs:dateTime" />
+				<xs:element minOccurs="0" name="region" type="xs:string" />
+				<xs:element maxOccurs="unbounded" minOccurs="0" ref="instructor" />
+				<xs:element minOccurs="0" name="institute" type="xs:string" />
+				<xs:element minOccurs="0" name="location" type="xs:string" />
+				<xs:element minOccurs="0" ref="facility" />
+				<xs:element minOccurs="0" name="open" type="xs:dateTime" />
+				<xs:element minOccurs="0" name="deadline" type="xs:dateTime" />
+				<xs:element minOccurs="0" name="seats" type="xs:nonNegativeInteger" />
+				<xs:element minOccurs="0" ref="price" />
+				<xs:element minOccurs="0" name="status" type="status" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" name="module"
+					type="sessionModule" />
+				<xs:element ref="link" />
+				<xs:element name="code" type="xs:string" />
+				<xs:element minOccurs="0" name="requiredElectiveCredits"
+					type="xs:decimal" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="class" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="attribute" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="sessionModule">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" />
+			<xs:element name="title" type="xs:string" />
+			<xs:element maxOccurs="2" minOccurs="2" ref="link" />
+			<xs:element name="type" type="type" />
+			<xs:element name="sessionId" type="xs:string" />
+			<xs:element minOccurs="0" name="start" type="xs:dateTime" />
+			<xs:element minOccurs="0" name="end" type="xs:dateTime" />
+			<xs:element name="region" type="xs:string" />
+			<xs:element maxOccurs="unbounded" minOccurs="0" ref="instructor" />
+			<xs:element name="institute" type="xs:string" />
+			<xs:element name="location" type="xs:string" />
+			<xs:element minOccurs="0" ref="facility" />
+			<xs:element minOccurs="0" name="open" type="xs:dateTime" />
+			<xs:element minOccurs="0" name="deadline" type="xs:dateTime" />
+			<xs:element minOccurs="0" name="seats" type="xs:nonNegativeInteger" />
+			<xs:element minOccurs="0" ref="price" />
+			<xs:element name="status" type="status" />
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="module"
+				type="sessionModule" />
+			<xs:element ref="link" />
+			<xs:element name="code" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="class" />
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="attribute" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="instructor">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:string" />
+				<xs:element name="family" type="xs:string" />
+				<xs:element name="given" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="facility">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="trainingCenter" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="trainingCenter">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="status">
+		<xs:restriction base="xs:NCName">
+			<xs:enumeration value="active" />
+			<xs:enumeration value="pending" />
+			<xs:enumeration value="completed" />
+			<xs:enumeration value="closed" />
+			<xs:enumeration value="cancelled" />
+			<xs:enumeration value="invitation" />
+			<xs:enumeration value="prompt" />
+			<xs:enumeration value="required" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="class">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="start" type="xs:dateTime" />
+				<xs:element minOccurs="0" name="end" type="xs:dateTime" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="certification">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" ref="exam" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="exam">
+		<xs:complexType>
+			<xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="prerequisites">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="operator" type="operator" />
+				<xs:element name="condition" type="condition" />
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="module">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="id" type="xs:string" />
+							<xs:element name="title" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="operator">
+		<xs:restriction base="xs:NCName">
+			<xs:enumeration value="all" />
+			<xs:enumeration value="any" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="condition">
+		<xs:restriction base="xs:NCName">
+			<xs:enumeration value="enrolled" />
+			<xs:enumeration value="completed" />
+			<xs:enumeration value="cmiCompleted" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
