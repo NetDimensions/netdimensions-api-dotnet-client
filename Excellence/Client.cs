@@ -1,10 +1,12 @@
 ﻿using NetDimensions.Apis.LearningPath;
+using NetDimensions.Apis.Records;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace NetDimensions.Apis
 {
@@ -44,13 +46,6 @@ namespace NetDimensions.Apis
             this.onBehalfOf = onBehalfOf;
         }
 
-        public learningPath getLearningPath(string assignmentId)
-        {
-            return Get("learningPath",
-                new[] { new Parameter("format", "xml"), new Parameter("assignmentId", assignmentId) },
-                stream => (learningPath)new System.Xml.Serialization.XmlSerializer(typeof(NetDimensions.Apis.LearningPath.learningPath)).Deserialize(stream));
-        }
-
         private T Get<T>(string functionName, IEnumerable<Parameter> parameters, Parser<T> responseParser)
         {
             WebRequest req = WebRequest.Create(baseUrl + "api/" + functionName + "?"
@@ -60,6 +55,27 @@ namespace NetDimensions.Apis
             {
                 return responseParser(resp.GetResponseStream());
             }
+        }
+
+        public trainingHistory getRecords()
+        {
+            return Get("records",
+                new Parameter[] { },
+                stream => (trainingHistory)new XmlSerializer(typeof(trainingHistory)).Deserialize(stream));
+        }
+
+        public learningPath getLearningPath(string assignmentId)
+        {
+            return Get("learningPath",
+                new[] { new Parameter("format", "xml"), new Parameter("assignmentId", assignmentId) },
+                stream => (learningPath)new XmlSerializer(typeof(learningPath)).Deserialize(stream));
+        }
+
+        public NetDimensions.Apis.Module.module getModule(string id, string assignmentId)
+        {
+            return Get("module",
+                new[] { new Parameter("id", id), new Parameter("assignmentId", assignmentId) },
+                stream => (NetDimensions.Apis.Module.module)new XmlSerializer(typeof(NetDimensions.Apis.Module.module)).Deserialize(stream));
         }
     }
 }
