@@ -12,7 +12,9 @@ namespace Excellence
     {
         static void Main(string[] args)
         {
-            learningPath path = new NetDimensions.Apis.Client(args[0], new NetworkCredential(args[1], args[2])).getLearningPath(args[3]);
+            learningPath path = new NetDimensions.Apis.Client(args[0],
+                new NetworkCredential(args[1], args[2]),
+                args[3]).getLearningPath();
             foreach (jobProfile p in path.jobProfile)
             {
                 Console.WriteLine("Job profile: {0}", p.name);

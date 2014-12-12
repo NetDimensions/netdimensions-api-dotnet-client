@@ -24,9 +24,9 @@ namespace NetDimensions.Apis
             return Uri.EscapeDataString(Name) + "=" + Uri.EscapeDataString(Value);
         }
 
-        public static string ToString(params Parameter[] parameters)
+        public static string ToString(IEnumerable<Parameter> parameters)
         {
-            return string.Join("&", (object[])parameters);
+            return string.Join("&", parameters);
         }
     }
 
@@ -36,22 +36,25 @@ namespace NetDimensions.Apis
     {
         private readonly string baseUrl;
         private readonly NetworkCredential credentials;
-        public Client(string url, NetworkCredential cred)
+        private readonly string onBehalfOf;
+        public Client(string url, NetworkCredential cred, string onBehalfOf)
         {
             this.baseUrl = url;
             this.credentials = cred;
+            this.onBehalfOf = onBehalfOf;
         }
 
-        public learningPath getLearningPath(string onBehalfOf)
+        public learningPath getLearningPath()
         {
             return Get("learningPath",
-                new[] { new Parameter("format", "xml"), new Parameter("onBehalfOf", onBehalfOf) },
+                new[] { new Parameter("format", "xml") },
                 stream => (learningPath)new System.Xml.Serialization.XmlSerializer(typeof(NetDimensions.Apis.LearningPath.learningPath)).Deserialize(stream));
         }
 
-        private T Get<T>(string functionName, Parameter[] parameters, Parser<T> responseParser)
+        private T Get<T>(string functionName, IEnumerable<Parameter> parameters, Parser<T> responseParser)
         {
-            WebRequest req = WebRequest.Create(baseUrl + "api/" + functionName + "?" + Parameter.ToString(parameters));
+            WebRequest req = WebRequest.Create(baseUrl + "api/" + functionName + "?"
+                + Parameter.ToString(parameters.Concat(new[] { new Parameter("onBehalfOf", onBehalfOf) })));
             req.Credentials = credentials;
             using (WebResponse resp = req.GetResponse())
             {
