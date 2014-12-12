@@ -44,10 +44,10 @@ namespace NetDimensions.Apis
             this.onBehalfOf = onBehalfOf;
         }
 
-        public learningPath getLearningPath()
+        public learningPath getLearningPath(string assignmentId)
         {
             return Get("learningPath",
-                new[] { new Parameter("format", "xml") },
+                new[] { new Parameter("format", "xml"), new Parameter("assignmentId", assignmentId) },
                 stream => (learningPath)new System.Xml.Serialization.XmlSerializer(typeof(NetDimensions.Apis.LearningPath.learningPath)).Deserialize(stream));
         }
 
