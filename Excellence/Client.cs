@@ -1,4 +1,5 @@
-﻿using NetDimensions.Apis.LearningPath;
+﻿using NetDimensions.Apis.CompetenciesAwarded;
+using NetDimensions.Apis.LearningPath;
 using NetDimensions.Apis.Records;
 using System;
 using System.Collections.Generic;
@@ -76,6 +77,13 @@ namespace NetDimensions.Apis
             return Get("module",
                 new[] { new Parameter("id", id), new Parameter("assignmentId", assignmentId) },
                 stream => (NetDimensions.Apis.Module.module)new XmlSerializer(typeof(NetDimensions.Apis.Module.module)).Deserialize(stream));
+        }
+
+        public competencies getCompetenciesAwarded(string assignmentId)
+        {
+            return Get("competenciesAwarded",
+                new[] { new Parameter("assignmentId", assignmentId) },
+                stream => (competencies)new XmlSerializer(typeof(competencies)).Deserialize(stream));
         }
     }
 }

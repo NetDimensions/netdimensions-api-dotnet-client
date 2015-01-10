@@ -32,7 +32,7 @@ namespace NetDimensions.Apis.Module {
         
         private string imageField;
         
-        private string revisionField;
+        private string effectiveRevisionField;
         
         private type typeField;
         
@@ -110,12 +110,12 @@ namespace NetDimensions.Apis.Module {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="nonNegativeInteger")]
-        public string revision {
+        public string effectiveRevision {
             get {
-                return this.revisionField;
+                return this.effectiveRevisionField;
             }
             set {
-                this.revisionField = value;
+                this.effectiveRevisionField = value;
             }
         }
         

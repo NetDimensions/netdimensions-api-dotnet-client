@@ -74,6 +74,7 @@
         </xs:element>
         <xs:element name="name" type="xs:string"/>
         <xs:element name="optional" type="xs:boolean"/>
+        <xs:element name="id" type="xs:string"/>
         <xs:element name="code" type="xs:string"/>
         <xs:element name="description" type="xs:string"/>
         <xs:element maxOccurs="unbounded" minOccurs="0" ref="sequence"/>

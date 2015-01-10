@@ -459,6 +459,8 @@ namespace NetDimensions.Apis.LearningPath {
         
         private bool optionalField;
         
+        private string idField;
+        
         private string codeField;
         
         private string descriptionField;
@@ -492,6 +494,16 @@ namespace NetDimensions.Apis.LearningPath {
             }
             set {
                 this.optionalField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
             }
         }
         
