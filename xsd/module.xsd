@@ -50,6 +50,14 @@
 			<xs:enumeration value="virtualClassroom" />
 			<xs:enumeration value="archivedVirtualClassroom" />
 			<xs:enumeration value="workshopSeminar" />
+			<xs:enumeration value="coaching" />
+			<xs:enumeration value="exam" />
+			<xs:enumeration value="internship" />
+			<xs:enumeration value="onTheJobTraining" />
+			<xs:enumeration value="selfTrainingPaper" />
+			<xs:enumeration value="selfTrainingVideo" />
+			<xs:enumeration value="specialInterestGroup" />
+			<xs:enumeration value="task" />
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:element name="price">

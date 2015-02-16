@@ -720,6 +720,30 @@ namespace NetDimensions.Apis.Module {
         
         /// <remarks/>
         workshopSeminar,
+        
+        /// <remarks/>
+        coaching,
+        
+        /// <remarks/>
+        exam,
+        
+        /// <remarks/>
+        internship,
+        
+        /// <remarks/>
+        onTheJobTraining,
+        
+        /// <remarks/>
+        selfTrainingPaper,
+        
+        /// <remarks/>
+        selfTrainingVideo,
+        
+        /// <remarks/>
+        specialInterestGroup,
+        
+        /// <remarks/>
+        task,
     }
     
     /// <remarks/>
