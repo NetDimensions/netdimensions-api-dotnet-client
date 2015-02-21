@@ -5,13 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace NetDimensions.Apis
 {
-    class Parameter
+    public class Parameter
     {
         public string Name { get; private set; }
         public string Value { get; private set; }
@@ -33,57 +31,85 @@ namespace NetDimensions.Apis
         }
     }
 
-    delegate T Parser<T>(System.IO.Stream str);
+    public delegate T Parser<T>(System.IO.Stream str);
 
-    class Client
+    public class Call<T>
     {
-        private readonly string baseUrl;
-        private readonly NetworkCredential credentials;
-        private readonly string onBehalfOf;
-        public Client(string url, NetworkCredential cred, string onBehalfOf)
+        public string FunctionName { get; private set; }
+        public IEnumerable<Parameter> Parameters { get; private set; }
+        public Parser<T> ResponseParser { get; private set; }
+        internal Call(string functionName, IEnumerable<Parameter> parameters, Parser<T> responseParser)
         {
-            this.baseUrl = url;
-            this.credentials = cred;
-            this.onBehalfOf = onBehalfOf;
+            FunctionName = functionName;
+            Parameters = parameters;
+            ResponseParser = responseParser;
+        }
+    }
+
+    public abstract class Client
+    {
+        protected abstract T Get<T>(Call<T> call);
+
+        internal static Call<T> Call<T>(string functionName, IEnumerable<Parameter> parameters, Parser<T> responseParser)
+        {
+            return new Call<T>(functionName, parameters, responseParser);
         }
 
-        private T Get<T>(string functionName, IEnumerable<Parameter> parameters, Parser<T> responseParser)
+        public trainingHistory GetRecords()
         {
-            WebRequest req = WebRequest.Create(baseUrl + "api/" + functionName + "?"
-                + Parameter.ToString(parameters.Concat(new[] { new Parameter("onBehalfOf", onBehalfOf) })));
-            req.Credentials = credentials;
-            using (WebResponse resp = req.GetResponse())
-            {
-                return responseParser(resp.GetResponseStream());
-            }
-        }
-
-        public trainingHistory getRecords()
-        {
-            return Get("records",
+            return Get(Call("records",
                 new Parameter[] { },
-                stream => (trainingHistory)new XmlSerializer(typeof(trainingHistory)).Deserialize(stream));
+                stream => (trainingHistory)new XmlSerializer(typeof(trainingHistory)).Deserialize(stream)));
         }
 
-        public learningPath getLearningPath(string assignmentId)
+        public learningPath GetLearningPath(string assignmentId)
         {
-            return Get("learningPath",
+            return Get(Call("learningPath",
                 new[] { new Parameter("format", "xml"), new Parameter("assignmentId", assignmentId) },
-                stream => (learningPath)new XmlSerializer(typeof(learningPath)).Deserialize(stream));
+                stream => (learningPath)new XmlSerializer(typeof(learningPath)).Deserialize(stream)));
         }
 
-        public NetDimensions.Apis.Module.module getModule(string id, string assignmentId)
+        public NetDimensions.Apis.Module.module GetModule(string id, string assignmentId)
         {
-            return Get("module",
+            return Get(Call("module",
                 new[] { new Parameter("id", id), new Parameter("assignmentId", assignmentId) },
-                stream => (NetDimensions.Apis.Module.module)new XmlSerializer(typeof(NetDimensions.Apis.Module.module)).Deserialize(stream));
+                stream => (NetDimensions.Apis.Module.module)new XmlSerializer(typeof(NetDimensions.Apis.Module.module)).Deserialize(stream)));
         }
 
-        public competencies getCompetenciesAwarded(string assignmentId)
+        public competencies GetCompetenciesAwarded(string assignmentId)
         {
-            return Get("competenciesAwarded",
+            return Get(Call("competenciesAwarded",
                 new[] { new Parameter("assignmentId", assignmentId) },
-                stream => (competencies)new XmlSerializer(typeof(competencies)).Deserialize(stream));
+                stream => (competencies)new XmlSerializer(typeof(competencies)).Deserialize(stream)));
+        }
+
+        private class WebClient : Client
+        {
+            private readonly string baseUrl;
+            private readonly NetworkCredential credentials;
+            private readonly string onBehalfOf;
+            internal WebClient(string url, NetworkCredential credentials, string onBehalfOf)
+            {
+                this.baseUrl = url;
+                this.credentials = credentials;
+                this.onBehalfOf = onBehalfOf;
+            }
+
+            protected override T Get<T>(Call<T> call)
+            {
+                WebRequest req = WebRequest.Create(baseUrl + "api/" + call.FunctionName + "?"
+                    + Parameter.ToString(call.Parameters.Concat(new[] { new Parameter("onBehalfOf", onBehalfOf) })));
+                req.Credentials = credentials;
+                using (WebResponse resp = req.GetResponse())
+                {
+                    return call.ResponseParser(resp.GetResponseStream());
+                }
+            }
+        };
+
+        public static Client From(string url, NetworkCredential credentials, string onBehalfOf)
+        {
+            return new WebClient(url, credentials, onBehalfOf);
         }
     }
 }

@@ -14,22 +14,22 @@ namespace NetDimensions.Excellence
     {
         static void Main(string[] args)
         {
-            Client client = new Client(args[0], new NetworkCredential(args[1], args[2]), args[3]);
+            Client client = Client.From(args[0], new NetworkCredential(args[1], args[2]), args[3]);
             string assignmentId = args[4];
-            learningPath path = client.getLearningPath(assignmentId);
+            learningPath path = client.GetLearningPath(assignmentId);
             foreach (jobProfile p in path.jobProfile)
             {
                 Console.WriteLine("Job profile: {0}", p.name);
             }
-            foreach (trainingRecord r in client.getRecords().trainingRecord)
+            foreach (trainingRecord r in client.GetRecords().trainingRecord)
             {
                 Console.WriteLine("Record: {0} ({1})", r.learningModule.title, r.revision);
             }
-            NetDimensions.Apis.Module.module mod = client.getModule("SingleCourseManifest", assignmentId);
+            NetDimensions.Apis.Module.module mod = client.GetModule("SingleCourseManifest", assignmentId);
             Console.WriteLine("ID: {0}", mod.id);
             Console.WriteLine("Title: {0}", mod.title);
             Console.WriteLine("Revision: {0}", mod.effectiveRevision);
-            client.getCompetenciesAwarded(assignmentId);
+            client.GetCompetenciesAwarded(assignmentId);
             Console.ReadKey();
         }
     }
