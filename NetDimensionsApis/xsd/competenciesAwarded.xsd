@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- For reference only. DO NOT USE FOR VALIDATION, as future Talent Suite 
+	releases might return elements not included here. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="competencies">
+		<xs:complexType>
+			<xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" ref="competency" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="competency">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:string" />
+				<xs:element name="name" type="xs:string" />
+				<xs:element name="description" type="xs:string" />
+				<xs:element name="assigned" type="xs:dateTime" />
+				<xs:element name="level" type="level" />
+				<xs:element name="requiredLevel" type="level" />
+				<xs:element name="maxLevel" type="level" />
+				<xs:element name="competent" type="xs:boolean" />
+				<xs:element minOccurs="0" ref="assigner" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="level">
+		<xs:sequence>
+			<xs:element name="code" type="xs:string" />
+			<xs:element name="measure" type="xs:decimal" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="assigner">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:string" />
+				<xs:element name="family" type="xs:string" />
+				<xs:element name="given" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
