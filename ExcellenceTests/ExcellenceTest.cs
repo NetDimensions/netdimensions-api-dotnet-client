@@ -23,7 +23,13 @@ namespace NetDimensions.Excellence
         [TestMethod]
         public void TestMethod1()
         {
-            Assert.AreEqual(3, new MockClient().GetLearningPath("netd_rob").jobProfile.Length);
+            item unenrolledProgram = new Excellence(new MockClient(), "netd_rob")
+                .GetExpandedLearningPath()
+                .jobProfile[2]
+                .competency[0]
+                .sequence[0]
+                .item[0];
+            Assert.AreEqual(2, unenrolledProgram.sequence.Length);
         }
     }
 }

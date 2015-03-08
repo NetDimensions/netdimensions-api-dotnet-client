@@ -11,6 +11,7 @@
 				<xs:element minOccurs="0" name="image" type="xs:anyURI" />
 				<xs:element name="effectiveRevision" type="xs:nonNegativeInteger" />
 				<xs:element name="type" type="type" />
+				<xs:element name="typeLabel" type="xs:string" />
 				<xs:element name="subject" type="xs:string" />
 				<xs:element name="language" type="xs:string" />
 				<xs:element name="description" type="xs:string" />
@@ -109,6 +110,7 @@
 			<xs:element name="title" type="xs:string" />
 			<xs:element maxOccurs="2" minOccurs="2" ref="link" />
 			<xs:element name="type" type="type" />
+			<xs:element name="typeLabel" type="xs:string" />
 			<xs:element name="sessionId" type="xs:string" />
 			<xs:element minOccurs="0" name="start" type="xs:dateTime" />
 			<xs:element minOccurs="0" name="end" type="xs:dateTime" />

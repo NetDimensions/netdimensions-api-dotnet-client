@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excellence", "Excellence\Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcellenceTests", "ExcellenceTests\ExcellenceTests.csproj", "{99BF84DB-F489-4CDF-AE43-3877E9D107DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetDimensionsApis", "NetDimensionsApis\NetDimensionsApis.csproj", "{578E5237-DB5A-4ED7-AA5F-0A25480CDABF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{99BF84DB-F489-4CDF-AE43-3877E9D107DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99BF84DB-F489-4CDF-AE43-3877E9D107DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99BF84DB-F489-4CDF-AE43-3877E9D107DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{578E5237-DB5A-4ED7-AA5F-0A25480CDABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{578E5237-DB5A-4ED7-AA5F-0A25480CDABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{578E5237-DB5A-4ED7-AA5F-0A25480CDABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{578E5237-DB5A-4ED7-AA5F-0A25480CDABF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

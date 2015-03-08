@@ -79,7 +79,7 @@ namespace NetDimensions.Apis
         public competencies GetCompetenciesAwarded(string assignmentId)
         {
             return Get(Call("competenciesAwarded",
-                new[] { new Parameter("assignmentId", assignmentId) },
+                new[] { new Parameter("format", "xml"), new Parameter("assignmentId", assignmentId) },
                 stream => (competencies)new XmlSerializer(typeof(competencies)).Deserialize(stream)));
         }
 

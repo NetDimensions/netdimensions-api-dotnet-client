@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{665B036D-463B-4460-90BC-491B17821C25}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{578E5237-DB5A-4ED7-AA5F-0A25480CDABF}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Excellence</RootNamespace>
-    <AssemblyName>Excellence</AssemblyName>
+    <RootNamespace>NetDimensionsApis</RootNamespace>
+    <AssemblyName>NetDimensionsApis</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,17 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Excellence.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="competenciesAwarded.cs" />
+    <Compile Include="learningPath.cs" />
+    <Compile Include="module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NetDimensionsApis\NetDimensionsApis.csproj">
-      <Project>{578e5237-db5a-4ed7-aa5f-0a25480cdabf}</Project>
-      <Name>NetDimensionsApis</Name>
-    </ProjectReference>
+    <Compile Include="records.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -69,6 +69,10 @@
       <Project>{665b036d-463b-4460-90bc-491b17821c25}</Project>
       <Name>Excellence</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NetDimensionsApis\NetDimensionsApis.csproj">
+      <Project>{578e5237-db5a-4ed7-aa5f-0a25480cdabf}</Project>
+      <Name>NetDimensionsApis</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -78,6 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\learningPath.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

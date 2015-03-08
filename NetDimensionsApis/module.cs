@@ -36,6 +36,8 @@ namespace NetDimensions.Apis.Module {
         
         private type typeField;
         
+        private string typeLabelField;
+        
         private string subjectField;
         
         private string languageField;
@@ -127,6 +129,17 @@ namespace NetDimensions.Apis.Module {
             }
             set {
                 this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string typeLabel {
+            get {
+                return this.typeLabelField;
+            }
+            set {
+                this.typeLabelField = value;
             }
         }
         
@@ -346,6 +359,8 @@ namespace NetDimensions.Apis.Module {
         
         private type typeField;
         
+        private string typeLabelField;
+        
         private string sessionIdField;
         
         private System.DateTime startField;
@@ -436,6 +451,17 @@ namespace NetDimensions.Apis.Module {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public string typeLabel {
+            get {
+                return this.typeLabelField;
+            }
+            set {
+                this.typeLabelField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
         public string sessionId {
             get {
                 return this.sessionIdField;
@@ -446,7 +472,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
         public System.DateTime start {
             get {
                 return this.startField;
@@ -468,7 +494,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
         public System.DateTime end {
             get {
                 return this.endField;
@@ -490,7 +516,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
         public string region {
             get {
                 return this.regionField;
@@ -501,7 +527,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("instructor", Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute("instructor", Order=9)]
         public instructor[] instructor {
             get {
                 return this.instructorField;
@@ -512,7 +538,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
         public string institute {
             get {
                 return this.instituteField;
@@ -523,7 +549,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
         public string location {
             get {
                 return this.locationField;
@@ -534,7 +560,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
         public facility facility {
             get {
                 return this.facilityField;
@@ -545,7 +571,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=13)]
         public System.DateTime open {
             get {
                 return this.openField;
@@ -567,7 +593,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=13)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=14)]
         public System.DateTime deadline {
             get {
                 return this.deadlineField;
@@ -589,7 +615,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="nonNegativeInteger", Order=14)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="nonNegativeInteger", Order=15)]
         public string seats {
             get {
                 return this.seatsField;
@@ -600,7 +626,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=16)]
         public price price {
             get {
                 return this.priceField;
@@ -611,7 +637,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=16)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=17)]
         public status status {
             get {
                 return this.statusField;
@@ -622,7 +648,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("module", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=17)]
+        [System.Xml.Serialization.XmlElementAttribute("module", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=18)]
         public sessionModule[] module {
             get {
                 return this.moduleField;
@@ -633,7 +659,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("link", Order=18)]
+        [System.Xml.Serialization.XmlElementAttribute("link", Order=19)]
         public link link1 {
             get {
                 return this.link1Field;
@@ -644,7 +670,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=19)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=20)]
         public string code {
             get {
                 return this.codeField;
@@ -655,7 +681,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("class", Order=20)]
+        [System.Xml.Serialization.XmlElementAttribute("class", Order=21)]
         public @class[] @class {
             get {
                 return this.classField;
@@ -666,7 +692,7 @@ namespace NetDimensions.Apis.Module {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("attribute", Order=21)]
+        [System.Xml.Serialization.XmlElementAttribute("attribute", Order=22)]
         public attribute[] attribute {
             get {
                 return this.attributeField;
