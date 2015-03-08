@@ -3,8 +3,8 @@
 The Talent Suite API Client Library for .NET is intended to provide straightforward access to the Talent
 Suite API for .NET applications.
 
-The sample C# code below retrieves **joestudent**'s learning path and prints the name of each assigned job
-profile to the console.
+The sample C# code below uses the `NetDimensions.Apis.Client` class to retrieve **joestudent**'s learning
+path, and prints the name of each assigned job profile to the console.
 
 ```c#
 string url = "https://www.example.com/ekp/";  // base URL of site
