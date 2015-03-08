@@ -10,7 +10,7 @@ profile to the console.
 string url = "https://www.example.com/ekp/";  // base URL of site
 string userId = "myapp";  // ID of privileged user (with Switch User permission)
 string password = "changeme";  // password of privileged user (with Switch User permission)
-string onBehalfOf = "joestudent"; ID of the end user
+string onBehalfOf = "joestudent";  // ID of the end user
 Client client = Client.From(url, new NetworkCredential(userId, password), onBehalfOf);
 string assignmentId = "";  // can be empty if not using multiple assignments
 learningPath path = client.GetLearningPath(assignmentId);
