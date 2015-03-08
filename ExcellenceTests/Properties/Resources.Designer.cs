@@ -69,5 +69,14 @@ namespace ExcellenceTests.Properties {
                 return ResourceManager.GetString("learningPath", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;module&gt;&lt;id&gt;unenrolled-program&lt;/id&gt;&lt;title&gt;Unenrolled Program&lt;/title&gt;&lt;link href=&quot;https://preview.netdimensions.com/preview/api/module?id=unenrolled-program&quot; rel=&quot;self&quot; type=&quot;application/xml&quot;/&gt;&lt;link href=&quot;https://preview.netdimensions.com/preview/servlet/ekp?CID=unenrolled-program&amp;amp;TX=FORMAT1&quot; rel=&quot;alternate&quot; type=&quot;text/html&quot;/&gt;&lt;effectiveRevision&gt;0&lt;/effectiveRevision&gt;&lt;type&gt;learningProgram&lt;/type&gt;&lt;typeLabel&gt;Program&lt;/typeLabel&gt;&lt;subject&gt;Unassigned&lt;/subject&gt;&lt;language&gt;English [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string module {
+            get {
+                return ResourceManager.GetString("module", resourceCulture);
+            }
+        }
     }
 }

@@ -12,7 +12,9 @@ namespace NetDimensions.Excellence
     {
         protected override T Get<T>(Call<T> call)
         {
-            string s = ExcellenceTests.Properties.Resources.learningPath;
+            string s = "module".Equals(call.FunctionName)
+                ? ExcellenceTests.Properties.Resources.module
+                : ExcellenceTests.Properties.Resources.learningPath;
             return call.ResponseParser(new MemoryStream(System.Text.Encoding.UTF8.GetBytes(s)));
         }
     }

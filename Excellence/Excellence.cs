@@ -63,7 +63,7 @@ namespace NetDimensions.Excellence
                                 {
                                     var modules = client.GetModule(i.module.id, assignmentId).session[0]
                                         .module;
-                                    var x = from m in modules select new sequence {
+                                    i.sequence = (from m in modules select new sequence {
                                         item = new item[] {
                                             new item {
                                                 status = i.status,
@@ -76,8 +76,7 @@ namespace NetDimensions.Excellence
                                                 }
                                             }
                                         }
-                                    };
-                                    i.sequence = new sequence[0];
+                                    }).ToArray();
                                 }));
                             }
                         }
