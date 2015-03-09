@@ -4,7 +4,9 @@ The class `NetDimensions.Excellence.Excellence` provides a `GetExpandedLearningP
 representation of a user's learning path that includes submodules of programmes in which the learner is not
 enrolled.
 
-The sample C# code below demonstrates usage.
+To use, first create an instance of the
+[generic client](https://github.com/rmlowe/netdimensions-api-dotnet-client/tree/master/NetDimensionsApis),
+then use this to instantiate an `Excellence` instance as demonstrated by the C# code below.
 
 ```c#
 // Create generic API client instance
@@ -26,7 +28,7 @@ foreach (jobProfile p in path.jobProfile)
 		if (c.sequence != null) {
 			foreach (sequence s in c.sequence) {
 				foreach (item i in s.item) {
-					// This could be an unenrolled program
+					// This could be an unenrolled programme
 					if (i.sequence != null) {
 						foreach (sequence s2 in i.sequence) {
 							foreach (item i2 in s2.item) {
