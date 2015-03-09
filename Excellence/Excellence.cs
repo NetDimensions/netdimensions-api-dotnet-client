@@ -20,34 +20,48 @@ namespace NetDimensions.Excellence
             this.assignmentId = assignmentId;
         }
 
-        void Main()
+        static void Main(string[] args)
         {
-            learningPath path = client.GetLearningPath(assignmentId);
+            // Create generic API client instance
+            Client client = Client.From(args[0], new NetworkCredential(args[1], args[2]), args[3]);
+
+            // Create Excellence wrapper
+            string assignmentId = args[4];
+            Excellence ex = new Excellence(client, assignmentId);
+
+            // Get the expanded learning path, and do something with it
+            learningPath path = ex.GetExpandedLearningPath();
             foreach (jobProfile p in path.jobProfile)
             {
-                Console.WriteLine("Job profile: {0}", p.name);
+                foreach (competency c in p.competency)
+                {
+                    if (c.sequence != null)
+                    {
+                        foreach (sequence s in c.sequence)
+                        {
+                            foreach (item i in s.item)
+                            {
+                                // This could be an unenrolled program
+                                if (i.sequence != null)
+                                {
+                                    foreach (sequence s2 in i.sequence)
+                                    {
+                                        foreach (item i2 in s2.item)
+                                        {
+                                            Console.WriteLine("Submodule: {0}", i2.module.title);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            foreach (trainingRecord r in client.GetRecords().trainingRecord)
-            {
-                Console.WriteLine("Record: {0} ({1})", r.learningModule.title, r.revision);
-            }
-            NetDimensions.Apis.Module.module mod = client.GetModule("SingleCourseManifest", assignmentId);
-            Console.WriteLine("ID: {0}", mod.id);
-            Console.WriteLine("Title: {0}", mod.title);
-            Console.WriteLine("Revision: {0}", mod.effectiveRevision);
-            client.GetCompetenciesAwarded(assignmentId);
             Console.ReadKey();
         }
 
-        static void Main(string[] args)
-        {
-            Client client = Client.From(args[0], new NetworkCredential(args[1], args[2]), args[3]);
-            string assignmentId = args[4];
-            new Excellence(client, assignmentId).Main();
-        }
-
         // Consolidating schema would make this unnecessary
-        private static typeCode convertType(NetDimensions.Apis.Module.type t)
+        private static typeCode ConvertType(NetDimensions.Apis.Module.type t)
         {
             switch (t)
             {
@@ -114,7 +128,7 @@ namespace NetDimensions.Excellence
                                                     id = m.id,
                                                     title = m.title,
                                                     type = new NetDimensions.Apis.LearningPath.type {
-                                                        code = convertType(m.type),
+                                                        code = ConvertType(m.type),
                                                         label = m.typeLabel
                                                     }
                                                 },
