@@ -45,5 +45,13 @@ namespace NetDimensions.Excellence
             item unenrolledProgram = UnenrolledProgram();
             Assert.AreEqual(typeCode.onlineModule, unenrolledProgram.sequence[0].item[0].module.type.code);
         }
+
+        [TestMethod]
+        public void TestUrlForAddedModule()
+        {
+            item unenrolledProgram = UnenrolledProgram();
+            Assert.AreEqual("https://preview.netdimensions.com/preview/servlet/ekp?CID=230979_eng&TX=FORMAT1",
+                unenrolledProgram.sequence[0].item[0].url);
+        }
     }
 }

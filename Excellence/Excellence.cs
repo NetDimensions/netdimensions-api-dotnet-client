@@ -117,7 +117,8 @@ namespace NetDimensions.Excellence
                                                         code = convertType(m.type),
                                                         label = m.typeLabel
                                                     }
-                                                }
+                                                },
+                                                url = m.link[1].href
                                             }
                                         }
                                     }).ToArray();
