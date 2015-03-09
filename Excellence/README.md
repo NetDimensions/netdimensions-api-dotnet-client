@@ -17,7 +17,7 @@ string onBehalfOf = "joestudent";  // ID of the end user
 Client client = Client.From(url, new NetworkCredential(userId, password), onBehalfOf);
 
 // Create Excellence wrapper
-string assignmentId = "";  // can be empty if not using multiple assignments
+string assignmentId = "ekp000467350";
 Excellence ex = new Excellence(client, assignmentId);
 
 // Get the expanded learning path, and do something with it
