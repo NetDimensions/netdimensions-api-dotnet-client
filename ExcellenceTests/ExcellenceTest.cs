@@ -23,15 +23,27 @@ namespace NetDimensions.Excellence
     public class ExcellenceTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestModulesAddedForUnenrolledProgram()
         {
-            item unenrolledProgram = new Excellence(new MockClient(), "netd_rob")
+            item unenrolledProgram = UnenrolledProgram();
+            Assert.AreEqual(2, unenrolledProgram.sequence.Length);
+        }
+
+        private static item UnenrolledProgram()
+        {
+            return new Excellence(new MockClient(), "netd_rob")
                 .GetExpandedLearningPath()
                 .jobProfile[2]
                 .competency[0]
                 .sequence[0]
                 .item[0];
-            Assert.AreEqual(2, unenrolledProgram.sequence.Length);
+        }
+
+        [TestMethod]
+        public void TestTypeCodeForAddedModule()
+        {
+            item unenrolledProgram = UnenrolledProgram();
+            Assert.AreEqual(typeCode.onlineModule, unenrolledProgram.sequence[0].item[0].module.type.code);
         }
     }
 }

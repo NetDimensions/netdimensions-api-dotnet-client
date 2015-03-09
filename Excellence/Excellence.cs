@@ -46,6 +46,49 @@ namespace NetDimensions.Excellence
             new Excellence(client, assignmentId).Main();
         }
 
+        // Consolidating schema would make this unnecessary
+        private static typeCode convertType(NetDimensions.Apis.Module.type t)
+        {
+            switch (t)
+            {
+                case NetDimensions.Apis.Module.type.archivedVirtualClassroom:
+                    return typeCode.archivedVirtualClassroom;
+                case NetDimensions.Apis.Module.type.audioCassette:
+                    return typeCode.audioCassette;
+                case NetDimensions.Apis.Module.type.book:
+                    return typeCode.book;
+                case NetDimensions.Apis.Module.type.cd:
+                    return typeCode.cd;
+                case NetDimensions.Apis.Module.type.classroom:
+                    return typeCode.classroom;
+                case NetDimensions.Apis.Module.type.coaching:
+                case NetDimensions.Apis.Module.type.exam:
+                case NetDimensions.Apis.Module.type.internship:
+                case NetDimensions.Apis.Module.type.onlineModule:
+                case NetDimensions.Apis.Module.type.onTheJobTraining:
+                case NetDimensions.Apis.Module.type.selfTrainingPaper:
+                case NetDimensions.Apis.Module.type.selfTrainingVideo:
+                case NetDimensions.Apis.Module.type.specialInterestGroup:
+                case NetDimensions.Apis.Module.type.task:
+                default:
+                    return typeCode.onlineModule;
+                case NetDimensions.Apis.Module.type.externalCertification:
+                    return typeCode.externalCertification;
+                case NetDimensions.Apis.Module.type.externalCourse:
+                    return typeCode.externalCourse;
+                case NetDimensions.Apis.Module.type.justInTimeLearning:
+                    return typeCode.justInTimeLearning;
+                case NetDimensions.Apis.Module.type.learningProgram:
+                    return typeCode.learningProgram;
+                case NetDimensions.Apis.Module.type.video:
+                    return typeCode.video;
+                case NetDimensions.Apis.Module.type.virtualClassroom:
+                    return typeCode.virtualClassroom;
+                case NetDimensions.Apis.Module.type.workshopSeminar:
+                    return typeCode.workshopSeminar;
+            }
+        }
+
         private IEnumerable<Task> ExpandSequence(sequence[] ss)
         {
             var result = new List<Task>();
@@ -71,6 +114,7 @@ namespace NetDimensions.Excellence
                                                     id = m.id,
                                                     title = m.title,
                                                     type = new NetDimensions.Apis.LearningPath.type {
+                                                        code = convertType(m.type),
                                                         label = m.typeLabel
                                                     }
                                                 }
