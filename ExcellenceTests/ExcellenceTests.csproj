@@ -81,6 +81,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md" />
     <None Include="Resources\learningPath.xml" />
   </ItemGroup>
   <ItemGroup>
