@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace NetDimensions.Apis
@@ -49,6 +50,11 @@ namespace NetDimensions.Apis
     public abstract class Client
     {
         protected abstract T Get<T>(Call<T> call);
+
+        private Task<T> GetAsync<T>(Call<T> call)
+        {
+            return Task.Run(() => Get(call));
+        }
 
         internal static Call<T> Call<T>(string functionName, IEnumerable<Parameter> parameters, Parser<T> responseParser)
         {

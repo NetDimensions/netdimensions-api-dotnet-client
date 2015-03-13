@@ -71,11 +71,38 @@ namespace ExcellenceTests.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;learningPath&gt;&lt;jobProfile&gt;&lt;name&gt;Technician&lt;/name&gt;&lt;code&gt;Technician&lt;/code&gt;&lt;description/&gt;&lt;competency&gt;&lt;status&gt;&lt;code&gt;completed&lt;/code&gt;&lt;label&gt;Completed&lt;/label&gt;&lt;/status&gt;&lt;name&gt;Technician Level 2&lt;/name&gt;&lt;optional&gt;false&lt;/optional&gt;&lt;id&gt;EKP000773724&lt;/id&gt;&lt;code&gt;Technician Level 2&lt;/code&gt;&lt;description/&gt;&lt;sequence&gt;&lt;item&gt;&lt;status&gt;&lt;code&gt;completed&lt;/code&gt;&lt;label&gt;Completed&lt;/label&gt;&lt;acquiredBySubstitutes&gt;false&lt;/acquiredBySubstitutes&gt;&lt;/status&gt;&lt;module&gt;&lt;id&gt;Pre-Course-L2&lt;/id&gt;&lt;title&gt;Pre Course (L2)&lt;/title [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string LearningPathTechnicianLevel2 {
+            get {
+                return ResourceManager.GetString("LearningPathTechnicianLevel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;module&gt;&lt;id&gt;unenrolled-program&lt;/id&gt;&lt;title&gt;Unenrolled Program&lt;/title&gt;&lt;link href=&quot;https://preview.netdimensions.com/preview/api/module?id=unenrolled-program&quot; rel=&quot;self&quot; type=&quot;application/xml&quot;/&gt;&lt;link href=&quot;https://preview.netdimensions.com/preview/servlet/ekp?CID=unenrolled-program&amp;amp;TX=FORMAT1&quot; rel=&quot;alternate&quot; type=&quot;text/html&quot;/&gt;&lt;effectiveRevision&gt;0&lt;/effectiveRevision&gt;&lt;type&gt;learningProgram&lt;/type&gt;&lt;typeLabel&gt;Program&lt;/typeLabel&gt;&lt;subject&gt;Unassigned&lt;/subject&gt;&lt;language&gt;English [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string module {
             get {
                 return ResourceManager.GetString("module", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;module&gt;&lt;id&gt;Online-L2-Unit-A&lt;/id&gt;&lt;title&gt;Online (L2 Unit A)&lt;/title&gt;&lt;link href=&quot;https://preview.netdimensions.com/preview/api/module?id=Online-L2-Unit-A&quot; rel=&quot;self&quot; type=&quot;application/xml&quot;/&gt;&lt;link href=&quot;https://preview.netdimensions.com/preview/servlet/ekp?CID=Online-L2-Unit-A&amp;amp;TX=FORMAT1&quot; rel=&quot;alternate&quot; type=&quot;text/html&quot;/&gt;&lt;effectiveRevision&gt;0&lt;/effectiveRevision&gt;&lt;type&gt;onlineModule&lt;/type&gt;&lt;typeLabel&gt;Online&lt;/typeLabel&gt;&lt;subject&gt;Unassigned&lt;/subject&gt;&lt;language&gt;English&lt;/language [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ModuleRevision0 {
+            get {
+                return ResourceManager.GetString("ModuleRevision0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;module&gt;&lt;id&gt;Online-L2-Unit-A&lt;/id&gt;&lt;title&gt;Online (L2 Unit A)&lt;/title&gt;&lt;link href=&quot;https://preview.netdimensions.com/preview/api/module?id=Online-L2-Unit-A&quot; rel=&quot;self&quot; type=&quot;application/xml&quot;/&gt;&lt;link href=&quot;https://preview.netdimensions.com/preview/servlet/ekp?CID=Online-L2-Unit-A&amp;amp;TX=FORMAT1&quot; rel=&quot;alternate&quot; type=&quot;text/html&quot;/&gt;&lt;effectiveRevision&gt;1&lt;/effectiveRevision&gt;&lt;type&gt;onlineModule&lt;/type&gt;&lt;typeLabel&gt;Online&lt;/typeLabel&gt;&lt;subject&gt;Unassigned&lt;/subject&gt;&lt;language&gt;English&lt;/language [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ModuleRevision1 {
+            get {
+                return ResourceManager.GetString("ModuleRevision1", resourceCulture);
             }
         }
     }

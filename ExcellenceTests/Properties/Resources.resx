@@ -121,7 +121,16 @@
   <data name="learningPath" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\learningPath.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="LearningPathTechnicianLevel2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\learningPath-Technician-Level-2.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="module" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\module.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="ModuleRevision0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ModuleRevision0.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="ModuleRevision1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ModuleRevision1.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

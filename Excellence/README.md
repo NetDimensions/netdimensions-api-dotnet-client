@@ -1,5 +1,7 @@
 ﻿# Excellence C# sample code
 
+# Expanded learning path
+
 The class `NetDimensions.Excellence.Excellence` provides a `GetExpandedLearningPath()` method that returns a
 representation of a user's learning path that includes submodules of programmes in which the learner is not
 enrolled.
@@ -40,5 +42,18 @@ foreach (jobProfile p in path.jobProfile)
 			}
 		}
 	}
+}
+```
+
+# Unit refresh
+
+```c#
+IEnumerable<Unit> units = ex.GetUnitRefreshAsync().Result;
+foreach (Unit unit in units) {
+	module programme = unit.Module;  // The programme representing the unit in need of refresh
+	competency c = unit.Competency;  // The associated competency
+	jobProfile p = unit.JobProfile;  // The associated job profile
+
+	// Do something with these ...
 }
 ```

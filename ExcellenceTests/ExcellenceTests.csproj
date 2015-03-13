@@ -90,6 +90,15 @@
   <ItemGroup>
     <None Include="Resources\module.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\learningPath-Technician-Level-2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ModuleRevision0.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ModuleRevision1.xml" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

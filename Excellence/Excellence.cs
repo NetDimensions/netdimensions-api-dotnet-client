@@ -10,6 +10,17 @@ using System.Threading.Tasks;
 
 namespace NetDimensions.Excellence
 {
+    internal class Result
+    {
+        internal bool IsRevised { get; private set; }
+        internal IEnumerable<Unit> Units { get; private set; }
+        internal Result(bool isRevised, IEnumerable<Unit> units)
+        {
+            IsRevised = isRevised;
+            Units = units;
+        }
+    }
+
     public class Excellence
     {
         private readonly Client client;
@@ -162,6 +173,100 @@ namespace NetDimensions.Excellence
             }
             Task.WaitAll(tasks.ToArray());
             return path;
+        }
+
+        private IEnumerable<UnitRefreshCompetency> UnitRefreshCompetencies(competency[] cs)
+        {
+            return from c in cs select new UnitRefreshCompetency(c, new object[0]);
+        }
+
+        public Task<Result> GetUnits(jobProfile p, competency c, item i)
+        {
+            Task<bool> isRevised = Task.Run(() =>
+            {
+                if (i.module.type.code == typeCode.onlineModule)
+                {
+                    return !"0".Equals(client.GetModule(i.module.id, assignmentId).effectiveRevision);
+                }
+                else
+                {
+                    return false;
+                }
+            });
+            Task<IEnumerable<Unit>> units = GetUnits(p, c, i.sequence);
+            return Task.Run(() =>
+                {
+                    return new Result(isRevised.Result, units.Result);
+                });
+        }
+
+        public Task<IEnumerable<Unit>> GetUnits(jobProfile p, competency c, sequence s)
+        {
+            List<Task<IEnumerable<Unit>>> tasks = new List<Task<IEnumerable<Unit>>>();
+            foreach (item i in s.item)
+            {
+                tasks.Add(GetUnits(p, c, i));
+            }
+            return Task.WhenAll(tasks).ContinueWith((lists) => lists.Result.SelectMany(e => e));
+        }
+
+        public Task<IEnumerable<Unit>> GetUnits(jobProfile p, competency c)
+        {
+            List<Task<IEnumerable<Unit>>> tasks = new List<Task<IEnumerable<Unit>>>();
+            foreach (sequence s in c.sequence)
+            {
+                tasks.Add(GetUnits(p, c, s));
+            }
+            return Task.WhenAll(tasks).ContinueWith((lists) => lists.Result.SelectMany(e => e));
+        }
+
+        public Task<IEnumerable<Unit>> GetUnits(jobProfile p)
+        {
+            List<Task<IEnumerable<Unit>>> tasks = new List<Task<IEnumerable<Unit>>>();
+            foreach (competency c in p.competency)
+            {
+                tasks.Add(GetUnits(p, c));
+            }
+            return Task.WhenAll(tasks).ContinueWith((lists) => lists.Result.SelectMany(e => e));
+        }
+
+        public Task<IEnumerable<Unit>> GetUnitRefreshAsync()
+        {
+            var t1 = Task.Run(() => client.GetLearningPath(assignmentId));
+            var t2 = Task.Run(() => client.GetRecords());
+            List<Task<IEnumerable<Unit>>> tasks = new List<Task<IEnumerable<Unit>>>();
+            foreach (jobProfile p in t1.Result.jobProfile)
+            {
+                tasks.Add(GetUnits(p));
+            }
+            return Task.WhenAll(tasks).ContinueWith((lists) => lists.Result.SelectMany(e => e));
+        }
+    }
+
+    public class Unit
+    {
+
+    }
+
+    public class UnitRefreshJobProfile
+    {
+        public jobProfile JobProfile { get; private set; }
+        public IEnumerable<UnitRefreshCompetency> Competencies { get; private set; }
+        internal UnitRefreshJobProfile(jobProfile p, IEnumerable<UnitRefreshCompetency> c)
+        {
+            JobProfile = p;
+            Competencies = c;
+        }
+    }
+
+    public class UnitRefreshCompetency
+    {
+        public competency Competency { get; private set; }
+        public IEnumerable<object> Modules { get; private set; }
+        internal UnitRefreshCompetency(competency c, IEnumerable<object> m)
+        {
+            Competency = c;
+            Modules = m;
         }
     }
 }
